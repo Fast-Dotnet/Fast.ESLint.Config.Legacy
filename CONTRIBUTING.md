@@ -31,7 +31,7 @@ Use `pnpm lint:fix` and `pnpm format` only for intentional mechanical changes. I
 3. Keep browser and Node.js globals separate; add narrow tooling overrides instead of making globals universal.
 4. Prefer upstream recommended configs, then document every local override immediately above the rule.
 5. Mark high-impact defaults with `[高影响]`; verify the locked rule's `meta.fixable` before adding `[可自动修复]`.
-6. Keep `docs/rules-risk.zh.md` and `docs/rules-risk.md` synchronized with high-impact defaults.
+6. Keep [rules-risk](http://docs.fastdotnet.cn/eslint-config-legacy/rules-risk) and [rules-risk.en](http://docs.fastdotnet.cn/eslint-config-legacy/rules-risk.en) synchronized with high-impact defaults.
 7. Never sort a map whose key order has semantics, including `package.json#exports` condition objects.
 8. Keep organization-specific dependency restrictions out of complete configs; expose them as explicit overlay configs or rule records.
 9. Keep framework and language plugins on release lines whose peer range still includes ESLint 8.57; never bypass an incompatible peer range.

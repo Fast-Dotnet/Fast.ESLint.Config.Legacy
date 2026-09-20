@@ -8,6 +8,8 @@
 
 # @fast-china/eslint-config-legacy
 
+**[Documentation](http://docs.fastdotnet.cn/eslint-config-legacy/) · [Official website](http://fastdotnet.com)**
+
 Production ESLint 8 `.eslintrc` configuration for Vue web administration projects. Reusable creators also cover Vue 2/3, React, Angular, Node.js, TypeScript, JavaScript, JSON, YAML, Markdown, Promise, RegExp, and import rules.
 
 [![npm version](https://img.shields.io/npm/v/@fast-china/eslint-config-legacy?color=orange)](https://www.npmjs.com/package/@fast-china/eslint-config-legacy) [![node](https://img.shields.io/badge/node-%5E22.18%20%7C%7C%20%5E24.18-brightgreen)](https://nodejs.org/) [![eslint](https://img.shields.io/badge/eslint-%5E8.57-4b32c3)](https://eslint.org/) [![license](https://img.shields.io/npm/l/@fast-china/eslint-config-legacy)](./LICENSE)
@@ -62,85 +64,20 @@ Type-only imports and exports use standalone `import type` and `export type`, co
 
 ## Direct granular extends
 
-Each granular config can be used directly:
-
-```js
-module.exports = {
-	root: true,
-	extends: [
-		"@fast-china/eslint-config-legacy/common",
-		"@fast-china/eslint-config-legacy/javascript",
-		"@fast-china/eslint-config-legacy/typescript",
-		"@fast-china/eslint-config-legacy/vue2",
-		"@fast-china/eslint-config-legacy/prettier",
-	],
-};
-```
-
-Available names are `/angular`, `/common`, `/commonjs`, `/environment`, `/import`, `/javascript`, `/json`, `/lodash`, `/lodash-unified`, `/markdown`, `/node`, `/prettier`, `/promise`, `/react`, `/regexp`, `/sort-package`, `/sort-tsconfig`, `/type-aware`, `/typescript`, `/vue`, `/vue2`, and `/yaml`.
-
-`/vue` defaults to Vue 3. `/vue2` is the separate Vue 2 config.
+[Full configuration and examples](http://docs.fastdotnet.cn/eslint-config-legacy/guide.en)
 
 ## Reusable configuration fragments
 
-Projects that need a different composition can import creators from `/configs`:
-
-```js
-const {
-	createCommonConfigs,
-	createEnvironmentConfigs,
-	createJavaScriptConfigs,
-	createTypeScriptConfigs,
-	createVueConfigs,
-} = require("@fast-china/eslint-config-legacy/configs");
-const { GLOBS_CODE } = require("@fast-china/eslint-config-legacy/constants");
-
-module.exports = {
-	root: true,
-	overrides: [
-		...createEnvironmentConfigs({ environment: "browser", files: GLOBS_CODE }),
-		...createCommonConfigs(GLOBS_CODE),
-		...createJavaScriptConfigs(),
-		...createTypeScriptConfigs(),
-		...createVueConfigs({ version: 2 }),
-		{
-			files: ["src/**/*.{js,ts,vue}"],
-			rules: {
-				"no-console": "warn",
-			},
-		},
-	],
-};
-```
-
-Use `createVueConfigs({ version: 3 })` for Vue 3. React, Angular, type-aware TypeScript, sorting, Lodash import policies, JSON, YAML, Markdown, Promise, RegExp, import, and Prettier creators are exported from the same `/configs` entry.
-
-`createMarkdownConfigs()` returns root `extends` and code-block `overrides` separately; preserve both when composing it manually.
+[Full configuration and examples](http://docs.fastdotnet.cn/eslint-config-legacy/guide.en)
 
 ## Typed project rules
 
-```ts
-import { defineRules } from "@fast-china/eslint-config-legacy/rules";
-import type { RuleOptions } from "@fast-china/eslint-config-legacy/rules";
-
-const rules = defineRules({
-	"@typescript-eslint/no-unused-vars": "error",
-	"vue/attributes-order": "error",
-});
-
-const reusableRules = {
-	"no-console": "warn",
-} satisfies RuleOptions;
-```
-
-The `defineRules` implementation lives directly in `src/rules/index.ts`; there is no separate helper module.
-
-The `/rules` entry also exports `regexpRules` for Legacy overrides with custom file scopes; consumers must still register `eslint-plugin-regexp` when composing it directly.
+[Full configuration and examples](http://docs.fastdotnet.cn/eslint-config-legacy/guide.en)
 
 ## Documentation
 
-- [Compatibility matrix](./docs/dependency-compatibility.md)
-- [Default rules and risk guide](./docs/rules-risk.md)
+- [Compatibility matrix](http://docs.fastdotnet.cn/eslint-config-legacy/dependency-compatibility.en)
+- [Default rules and risk guide](http://docs.fastdotnet.cn/eslint-config-legacy/rules-risk.en)
 - [Engineering audit (Chinese)](./docs/engineering-audit.zh.md)
 - [Contributing guide](./CONTRIBUTING.md)
 - [Security policy](./SECURITY.md)

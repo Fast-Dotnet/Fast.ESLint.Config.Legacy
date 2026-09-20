@@ -8,6 +8,8 @@
 
 # @fast-china/eslint-config-legacy
 
+**[使用文档](http://docs.fastdotnet.cn/eslint-config-legacy/) · [官方网站](http://fastdotnet.com)**
+
 面向 Vue Web 浏览器管理项目的生产级 ESLint 8 `.eslintrc` 配置。可复用创建器同时支持 Vue 2/3、React、Angular、Node.js、TypeScript、JavaScript、JSON、YAML、Markdown、Promise、RegExp 与 import 规则。
 
 [![npm version](https://img.shields.io/npm/v/@fast-china/eslint-config-legacy?color=orange)](https://www.npmjs.com/package/@fast-china/eslint-config-legacy) [![Node.js](https://img.shields.io/badge/node-%5E22.18%20%7C%7C%20%5E24.18-brightgreen)](https://nodejs.org/) [![ESLint](https://img.shields.io/badge/eslint-%5E8.57-4b32c3)](https://eslint.org/) [![license](https://img.shields.io/npm/l/@fast-china/eslint-config-legacy)](./LICENSE)
@@ -62,85 +64,20 @@ module.exports = {
 
 ## 细粒度 extends
 
-每个细粒度配置都可以直接继承：
-
-```js
-module.exports = {
-	root: true,
-	extends: [
-		"@fast-china/eslint-config-legacy/common",
-		"@fast-china/eslint-config-legacy/javascript",
-		"@fast-china/eslint-config-legacy/typescript",
-		"@fast-china/eslint-config-legacy/vue2",
-		"@fast-china/eslint-config-legacy/prettier",
-	],
-};
-```
-
-可用名称包括 `/angular`、`/common`、`/commonjs`、`/environment`、`/import`、`/javascript`、`/json`、`/lodash`、`/lodash-unified`、`/markdown`、`/node`、`/prettier`、`/promise`、`/react`、`/regexp`、`/sort-package`、`/sort-tsconfig`、`/type-aware`、`/typescript`、`/vue`、`/vue2` 与 `/yaml`。
-
-`/vue` 默认是 Vue 3，`/vue2` 是单独的 Vue 2 配置。
+[完整配置与示例](http://docs.fastdotnet.cn/eslint-config-legacy/guide)
 
 ## 可复用配置片段
 
-需要其他组合时，从 `/configs` 导入创建器：
-
-```js
-const {
-	createCommonConfigs,
-	createEnvironmentConfigs,
-	createJavaScriptConfigs,
-	createTypeScriptConfigs,
-	createVueConfigs,
-} = require("@fast-china/eslint-config-legacy/configs");
-const { GLOBS_CODE } = require("@fast-china/eslint-config-legacy/constants");
-
-module.exports = {
-	root: true,
-	overrides: [
-		...createEnvironmentConfigs({ environment: "browser", files: GLOBS_CODE }),
-		...createCommonConfigs(GLOBS_CODE),
-		...createJavaScriptConfigs(),
-		...createTypeScriptConfigs(),
-		...createVueConfigs({ version: 2 }),
-		{
-			files: ["src/**/*.{js,ts,vue}"],
-			rules: {
-				"no-console": "warn",
-			},
-		},
-	],
-};
-```
-
-Vue 3 使用 `createVueConfigs({ version: 3 })`。React、Angular、类型感知 TypeScript、排序、Lodash 导入策略、JSON、YAML、Markdown、Promise、RegExp、import 与 Prettier 创建器都由同一个 `/configs` 入口导出。
-
-`createMarkdownConfigs()` 会分别返回根级 `extends` 与代码块 `overrides`，手动组合时必须同时保留。
+[完整配置与示例](http://docs.fastdotnet.cn/eslint-config-legacy/guide)
 
 ## 类型安全的项目规则
 
-```ts
-import { defineRules } from "@fast-china/eslint-config-legacy/rules";
-import type { RuleOptions } from "@fast-china/eslint-config-legacy/rules";
-
-const rules = defineRules({
-	"@typescript-eslint/no-unused-vars": "error",
-	"vue/attributes-order": "error",
-});
-
-const reusableRules = {
-	"no-console": "warn",
-} satisfies RuleOptions;
-```
-
-`defineRules` 的实现直接位于 `src/rules/index.ts`，不再保留单独的辅助模块。
-
-`/rules` 同时导出 `regexpRules`，可用于需要自定义文件范围的 Legacy override；使用时仍需注册 `eslint-plugin-regexp`。
+[完整配置与示例](http://docs.fastdotnet.cn/eslint-config-legacy/guide)
 
 ## 文档
 
-- [依赖兼容矩阵](./docs/dependency-compatibility.zh.md)
-- [默认规则与风险指南](./docs/rules-risk.zh.md)
+- [依赖兼容矩阵](http://docs.fastdotnet.cn/eslint-config-legacy/dependency-compatibility)
+- [默认规则与风险指南](http://docs.fastdotnet.cn/eslint-config-legacy/rules-risk)
 - [工程质量审查报告](./docs/engineering-audit.zh.md)
 - [贡献指南](./CONTRIBUTING.md)
 - [安全策略](./SECURITY.md)
