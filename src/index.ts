@@ -46,6 +46,8 @@ const markdownConfigs = createMarkdownConfigs();
  */
 const config: Linter.Config = {
 	extends: markdownConfigs.extends,
+	// 与现代配置一致排除技能内容；Prettier 仍需独立配置忽略。
+	ignorePatterns: ["**/.agents/**", "**/skills-lock.json"],
 	reportUnusedDisableDirectives: true,
 	overrides: [
 		...createEnvironmentConfigs({ environment: "browser", files: GLOBS_CODE }),

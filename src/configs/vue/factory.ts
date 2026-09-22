@@ -5,24 +5,22 @@ import type { Linter } from "eslint";
 import type { TypeAwareOptions } from "../typescript/factory";
 
 /**
- * Vue 2/3 单文件组件的内部配置选项。
- *
- * @internal
+ * Vue 2/3 单文件组件的配置选项。
  */
 export interface VueConfigOptions extends TypeAwareOptions {
 	/**
 	 * 决定 upstream Vue preset 与主版本专属规则。
-	 * @default 3
+	 * @defaultValue `3`
 	 */
 	version?: 2 | 3;
 	/**
-	 * Vue 单文件组件范围。
-	 * @default ["**\/*.vue"]
+	 * Vue 单文件组件范围
+	 * @defaultValue 包含 {@link GLOB_VUE} 的单元素数组
 	 */
 	files?: string[];
 	/**
-	 * 是否在 Vue script 中启用 TypeScript parser 与规则。
-	 * @default true
+	 * 是否在 Vue script 中启用 TypeScript parser 与规则
+	 * @defaultValue `true`
 	 */
 	typescript?: boolean;
 }
@@ -36,7 +34,6 @@ export interface VueConfigOptions extends TypeAwareOptions {
  *
  * @param options - Vue 主版本、文件范围、TypeScript 与类型感知选项。
  * @returns 匹配 Vue SFC 的单个 Legacy override。
- * @internal
  */
 export const createVueConfigs = ({
 	files = [GLOB_VUE],

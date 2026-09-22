@@ -3,8 +3,6 @@ import type { Linter } from "eslint";
 
 /**
  * Markdown 根级 processor 与虚拟代码块 override 的组合结果。
- *
- * @internal
  */
 export interface MarkdownConfigs {
 	/** 必须放在 Legacy 根配置的 Markdown processor 预置。 */
@@ -20,7 +18,6 @@ export interface MarkdownConfigs {
  * processor 的根级 extends 与虚拟文件 override 分开返回，调用方必须保留两部分和顺序。
  *
  * @returns 根级 Markdown extends 与代码块 override 的组合结果。
- * @internal
  */
 export const createMarkdownConfigs = (): MarkdownConfigs => ({
 	extends: ["plugin:markdown/recommended-legacy"],

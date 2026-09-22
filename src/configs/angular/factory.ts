@@ -5,32 +5,30 @@ import type { Linter } from "eslint";
 import type { TypeScriptConfigOptions } from "../typescript/factory";
 
 /**
- * Angular TypeScript 源码、外部模板和内联模板的内部配置选项。
+ * Angular TypeScript 源码、外部模板和内联模板的配置选项。
  *
- * 根入口默认不启用 Angular；消费项目需要 Angular、特殊 selector 或文件范围时
- * 或模板策略时，应在自己的 `.eslintrc` override 中表达，而不是调用内部创建器。
- *
- * @internal
+ * 根入口默认不启用 Angular；消费项目需要 Angular、特殊 selector、文件范围
+ * 或模板策略时，可通过 {@link createAngularConfigs} 自定义组合，或在自己的 `.eslintrc` override 中配置。
  */
 export interface AngularConfigOptions {
 	/**
 	 * Angular TypeScript 文件范围；monorepo 应显式限定到 Angular 应用目录。
-	 * @default ["**\/*.ts"]
+	 * @defaultValue 包含 {@link GLOB_ANGULAR_TYPESCRIPT} 的单元素数组
 	 */
 	typescriptFiles?: string[];
 	/**
-	 * Angular 外部模板文件范围。
-	 * @default ["**\/*.html"]
+	 * Angular 外部模板文件范围
+	 * @defaultValue 包含 {@link GLOB_ANGULAR_TEMPLATE} 的单元素数组
 	 */
 	templateFiles?: string[];
 	/**
-	 * 是否从 `@Component()` 元数据中抽取并检查内联模板。
-	 * @default true
+	 * 是否从 `@Component()` 元数据中抽取并检查内联模板
+	 * @defaultValue `true`
 	 */
 	inlineTemplates?: boolean;
 	/**
-	 * 是否启用 angular-eslint 官方模板无障碍预置。
-	 * @default true
+	 * 是否启用 angular-eslint 官方模板无障碍预置
+	 * @defaultValue `true`
 	 */
 	templateAccessibility?: boolean;
 }
@@ -45,7 +43,6 @@ export interface AngularConfigOptions {
  * @param options - Angular 文件范围、processor 与模板无障碍选项。
  * @param typeScriptOptions - 传递给 TypeScript 配置层的 parser 与类型感知选项。
  * @returns 按 TypeScript 源码、外部模板顺序排列的 ESLint 8 overrides。
- * @internal
  */
 export const createAngularConfigs = (
 	{

@@ -1,8 +1,8 @@
 /**
- * 配置创建器共用的内部文件匹配常量。
+ * 配置创建器共用的文件匹配常量，通过 `@fast-china/eslint-config-legacy/constants` 公开导出。
  *
- * 所有 glob 都使用 ESLint 8 Legacy override 语义，以消费项目工作目录为匹配根；它们不是
- * package exports。新增扩展名时必须同步检查环境、框架、声明文件和 CommonJS override。
+ * 所有 glob 都使用 ESLint 8 Legacy override 语义，以消费项目工作目录为匹配根。
+ * 新增扩展名时必须同步检查环境、框架、声明文件和 CommonJS override。
  *
  * @packageDocumentation
  */

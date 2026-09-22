@@ -1,18 +1,20 @@
-<p align="left">
-	<a href="./README.zh.md">简体中文</a> | <strong>English</strong>
-</p>
+[简体中文](./README.zh.md) | **English**
 
 <p align="center">
-	<img src="./Fast.png" alt="logo" width="160" />
+	<img src="./Fast.png" width="128" alt="Fast.ESLint.Config.Legacy Logo" />
 </p>
 
-# @fast-china/eslint-config-legacy
+<h1 align="center">Fast.ESLint.Config.Legacy</h1>
 
-**[Documentation](http://docs.fastdotnet.cn/eslint-config-legacy/) · [Official website](http://fastdotnet.com)**
+<p align="center">
+	<a href="https://www.npmjs.com/package/@fast-china/eslint-config-legacy"><img src="https://img.shields.io/npm/v/@fast-china/eslint-config-legacy?logo=npm" alt="npm version" /></a>
+	<a href="https://www.npmjs.com/package/@fast-china/eslint-config-legacy"><img src="https://img.shields.io/npm/dm/@fast-china/eslint-config-legacy" alt="npm downloads" /></a>
+	<a href="./LICENSE"><img src="https://img.shields.io/npm/l/@fast-china/eslint-config-legacy" alt="License" /></a>
+</p>
 
-Production ESLint 8 `.eslintrc` configuration for Vue web administration projects. Reusable creators also cover Vue 2/3, React, Angular, Node.js, TypeScript, JavaScript, JSON, YAML, Markdown, Promise, RegExp, and import rules.
+ESLint 8 Legacy configuration SDK with CommonJS, eslintrc and granular configuration entries.
 
-[![npm version](https://img.shields.io/npm/v/@fast-china/eslint-config-legacy?color=orange)](https://www.npmjs.com/package/@fast-china/eslint-config-legacy) [![node](https://img.shields.io/badge/node-%5E22.18%20%7C%7C%20%5E24.18-brightgreen)](https://nodejs.org/) [![eslint](https://img.shields.io/badge/eslint-%5E8.57-4b32c3)](https://eslint.org/) [![license](https://img.shields.io/npm/l/@fast-china/eslint-config-legacy)](./LICENSE)
+**[Documentation](http://docs.fastdotnet.cn/en-US/frontend/eslint-config-legacy/) · [Official website](http://fastdotnet.com)**
 
 ## Scope
 
@@ -41,43 +43,44 @@ pnpm add -D eslint@^8.57.0 typescript @fast-china/eslint-config-legacy
 
 Plugins and parsers are direct package dependencies.
 
-## Default configuration
+## Quick start
 
 ```js
 // .eslintrc.cjs
 module.exports = {
 	root: true,
 	extends: ["@fast-china/eslint-config-legacy"],
-	rules: {
-		"no-console": "warn",
-	},
 };
 ```
 
 The root enables browser globals, JavaScript, TypeScript, Vue 3, import-x, Promise, RegExp, JSON dialects, YAML, Markdown, CommonJS/tooling compatibility, and the Prettier conflict-disable layer.
 
-Version 2.1.9 keeps ESLint 8, opt-in type-aware linting, Vue 2, and all public Legacy presets while synchronizing compatible rule sources with the Fast.ESLint.Config 2.1.9 workspace. Vue single-file components disable `switch-exhaustiveness-check`; regular TypeScript and TSX retain the error-level check. Vue 2 alone disables the Vue 3 emits contract. React continues to use CommonJS-loadable ESLint 8 plugins because the modern baseline plugin is ESM-only.
+The unreleased 2.1.10 source retains the 2.1.9 ESLint 8, opt-in type-aware linting, Vue 2 and public Legacy policy, and synchronizes the skill-file default-ignore fix from Fast.ESLint.Config 2.1.10. Vue single-file components disable `switch-exhaustiveness-check`; regular TypeScript and TSX retain the error-level check. Vue 2 alone disables the Vue 3 emits contract. React continues to use CommonJS-loadable ESLint 8 plugins because the modern baseline plugin is ESM-only.
 
 The opt-in `/type-aware` config uses `recommended-type-checked`. Promise waiting remains an application decision: `no-floating-promises` and `strict-void-return` are disabled, while Promise misuse, invalid `await`, unsafe types, redundant conversions, and correctness-only `return-await` remain checked; Promise-returning event handlers are allowed in Vue templates and TSX attributes. Exported TypeScript module boundaries require explicit types, while internal functions, TSX component returns, and Vue SFC callbacks keep contextual inference.
 
 Type-only imports and exports use standalone `import type` and `export type`, constructor-only private members use `readonly`, and the shared JavaScript policy rejects direct or indirect dynamic string execution, Promise executor returns, and the `void` operator. Vue setup code cannot use props or refs in ways that lose reactivity.
 
-## Direct granular extends
+## Common usage
 
-[Full configuration and examples](http://docs.fastdotnet.cn/eslint-config-legacy/guide.en)
+For incremental adoption, extend only the granular configurations needed by the project:
 
-## Reusable configuration fragments
+```js
+// .eslintrc.cjs
+module.exports = {
+	root: true,
+	extends: ["@fast-china/eslint-config-legacy/javascript", "@fast-china/eslint-config-legacy/typescript"],
+};
+```
 
-[Full configuration and examples](http://docs.fastdotnet.cn/eslint-config-legacy/guide.en)
+These ESLint 8 entries do not use Flat Config APIs. Compose framework, type-aware and formatting capabilities through their documented entries.
 
-## Typed project rules
-
-[Full configuration and examples](http://docs.fastdotnet.cn/eslint-config-legacy/guide.en)
+Use `vueRules` for the rule record; Vue 2/3 differences belong to the configuration factories.
 
 ## Documentation
 
-- [Compatibility matrix](http://docs.fastdotnet.cn/eslint-config-legacy/dependency-compatibility.en)
-- [Default rules and risk guide](http://docs.fastdotnet.cn/eslint-config-legacy/rules-risk.en)
+- [Compatibility matrix](http://docs.fastdotnet.cn/en-US/frontend/eslint-config-legacy/dependency-compatibility)
+- [Default rules and risk guide](http://docs.fastdotnet.cn/en-US/frontend/eslint-config-legacy/rules-risk)
 - [Engineering audit (Chinese)](./docs/engineering-audit.zh.md)
 - [Contributing guide](./CONTRIBUTING.md)
 - [Security policy](./SECURITY.md)
@@ -96,6 +99,12 @@ Use `pnpm dev` for a long-running tsdown watch build while editing the package.
 
 Tests are separated by verification target: consumer types, runtime configs, and package contracts. `pnpm test` builds the package before running all three suites.
 
-## License
+## Copyright, license and use
 
-[Apache-2.0](./LICENSE)
+Copyright © 2018-Now 小方. This project uses [Apache License 2.0](./LICENSE). Use, modification, distribution and commercial use are permitted subject to its terms.
+
+When redistributing, provide the license, mark modified files and preserve applicable copyright, attribution and supplied NOTICE information as required. This summary does not replace the license or impose additional UI attribution.
+
+Users are responsible for the legal compliance and authorization of their own modifications, deployment, data processing and operations. This reminder is not an additional license condition.
+
+Except as required by applicable law or agreed in writing, the software is provided on an "AS IS" basis. Sections 7 and 8 govern warranty disclaimers and liability limits. Providing the project does not endorse downstream activities or assume users' contractual commitments. This statement does not exclude liability that cannot lawfully be excluded.

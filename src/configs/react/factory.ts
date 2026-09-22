@@ -6,32 +6,30 @@ import type { Linter } from "eslint";
 import type { TypeScriptConfigOptions } from "../typescript/factory";
 
 /**
- * React、Hooks 与 JSX accessibility 的内部配置选项。
+ * React、Hooks 与 JSX accessibility 的配置选项。
  *
  * 根入口默认不启用 React；创建器使用 automatic JSX runtime 和 React 版本自动检测。项目如需覆盖
- * 这些行为，应通过自己的 Legacy override 或 React settings 表达。
- *
- * @internal
+ * 这些行为，可通过 {@link createReactConfigs} 的选项配置，或在自己的 Legacy override 与 React settings 中覆盖。
  */
 export interface ReactConfigOptions {
 	/**
-	 * 普通 JS/JSX React 文件。
-	 * @default 所有 JavaScript 方言
+	 * 普通 JS/JSX React 文件
+	 * @defaultValue {@link GLOBS_JAVASCRIPT}
 	 */
 	javascriptFiles?: string[];
 	/**
-	 * TS/TSX React 文件。
-	 * @default 所有 TypeScript 方言
+	 * TS/TSX React 文件
+	 * @defaultValue {@link GLOBS_TYPESCRIPT}
 	 */
 	typescriptFiles?: string[];
 	/**
-	 * 传递给 `settings.react.version` 的 React 版本。
-	 * @default "detect"
+	 * 传递给 `settings.react.version` 的 React 版本
+	 * @defaultValue `"detect"`
 	 */
 	version?: string;
 	/**
 	 * JSX runtime；automatic 会关闭显式 React 作用域规则。
-	 * @default "automatic"
+	 * @defaultValue `"automatic"`
 	 */
 	jsxRuntime?: "automatic" | "classic";
 }
@@ -39,18 +37,18 @@ export interface ReactConfigOptions {
 /** 控制 React 创建器接管哪些脚本语言的内部组合选项。 */
 interface ReactLanguageOptions {
 	/**
-	 * 是否创建 JavaScript/JSX React override。
-	 * @default true
+	 * 是否创建 JavaScript/JSX React override
+	 * @defaultValue `true`
 	 */
 	javascript?: boolean;
 	/**
-	 * 是否创建 TypeScript/TSX React override。
-	 * @default true
+	 * 是否创建 TypeScript/TSX React override
+	 * @defaultValue `true`
 	 */
 	typescript?: boolean;
 	/**
-	 * 传递给 TypeScript parser 与规则层的配置。
-	 * @default {}
+	 * 传递给 TypeScript parser 与规则层的配置
+	 * @defaultValue `{}`
 	 */
 	typescriptOptions?: TypeScriptConfigOptions;
 }
@@ -65,7 +63,6 @@ interface ReactLanguageOptions {
  * @param options - React 版本、JSX runtime 与两种语言的文件范围。
  * @param languageOptions - 语言开关及 TypeScript parser 选项。
  * @returns 按 JavaScript、TypeScript 顺序排列的 React overrides。
- * @internal
  */
 export const createReactConfigs = (
 	{

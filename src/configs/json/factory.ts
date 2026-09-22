@@ -2,14 +2,12 @@ import { GLOBS_JSONC_AS_JSON, GLOBS_TSCONFIG, GLOB_JSON, GLOB_JSON5, GLOB_JSONC 
 import type { Linter } from "eslint";
 
 /**
- * JSON 方言配置的内部选项。
- *
- * @internal
+ * JSON 方言配置的选项。
  */
 export interface JsonConfigOptions {
 	/**
-	 * 是否追加 eslint-plugin-jsonc 的 Prettier 兼容预置。
-	 * @default true
+	 * 是否追加 eslint-plugin-jsonc 的 Prettier 兼容预置
+	 * @defaultValue `true`
 	 */
 	prettier?: boolean;
 }
@@ -18,9 +16,8 @@ export interface JsonConfigOptions {
  * 返回指定 JSON 方言对应的 Legacy 推荐预置链。
  *
  * @param dialect - 严格 JSON、JSON5 或允许注释的 JSONC。
- * @param prettier - 是否在推荐规则之后关闭与 Prettier 冲突的规则。
+ * @param prettier - 是否在推荐规则之后关闭与 Prettier 冲突的规则，默认为 `true`。
  * @returns 可直接写入 Legacy override `extends` 的有序名称数组。
- * @internal
  */
 export const createJsonExtends = (dialect: "json" | "json5" | "jsonc", prettier = true): string[] => [
 	`plugin:jsonc/recommended-with-${dialect}`,
@@ -35,7 +32,6 @@ export const createJsonExtends = (dialect: "json" | "json5" | "jsonc", prettier 
  *
  * @param options - Prettier 兼容层开关。
  * @returns 按严格 JSON、JSONC、JSON5、VS Code settings、tsconfig 排列的 overrides。
- * @internal
  */
 export const createJsonConfigs = ({ prettier = true }: JsonConfigOptions = {}): Linter.ConfigOverride[] => [
 	{

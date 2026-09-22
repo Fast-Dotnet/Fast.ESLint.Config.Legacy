@@ -8,14 +8,12 @@ interface TypeScriptConfigOverride extends Linter.ConfigOverride {
 }
 
 /**
- * TypeScript parser 与 Project Service 的内部配置选项。
- *
- * @internal
+ * TypeScript parser 与 Project Service 的配置选项。
  */
 export interface TypeAwareOptions {
 	/**
 	 * 启用 typescript-eslint 类型感知预置与 Project Service。
-	 * @default false
+	 * @defaultValue `false`
 	 */
 	typeChecked?: boolean;
 	/** Project Service 查找 tsconfig 的根目录；未提供时由 typescript-eslint 推断。 */
@@ -23,14 +21,12 @@ export interface TypeAwareOptions {
 }
 
 /**
- * 普通 TypeScript 文件的内部配置选项。
- *
- * @internal
+ * 普通 TypeScript 文件的配置选项。
  */
 export interface TypeScriptConfigOptions extends TypeAwareOptions {
 	/**
-	 * TypeScript/TSX 文件范围。
-	 * @default 所有 TypeScript 方言
+	 * TypeScript/TSX 文件范围
+	 * @defaultValue {@link GLOBS_TYPESCRIPT}
 	 */
 	files?: string[];
 }
@@ -45,7 +41,6 @@ export interface TypeScriptConfigOptions extends TypeAwareOptions {
  *
  * @param options - 类型感知开关及可选 tsconfig 根目录。
  * @returns 可用于 `@typescript-eslint/parser` 或 Vue 子 parser 的新 parserOptions 对象。
- * @internal
  */
 export const createTypeScriptParserOptions = (options: TypeAwareOptions = {}): Linter.ParserOptions => ({
 	ecmaVersion: "latest",
@@ -64,7 +59,6 @@ export const createTypeScriptParserOptions = (options: TypeAwareOptions = {}): L
  *
  * @param options - 类型感知开关。
  * @returns 与现代基准的 recommendedTypeChecked 对应的 Legacy extends 名称。
- * @internal
  */
 export const createTypeScriptExtends = (options: TypeAwareOptions = {}): string[] =>
 	options.typeChecked ? ["plugin:@typescript-eslint/recommended-type-checked"] : ["plugin:@typescript-eslint/recommended"];
@@ -75,9 +69,8 @@ export const createTypeScriptExtends = (options: TypeAwareOptions = {}): string[
  * 本地 JavaScript 规则继续覆盖 TS 文件，再由 typescript-eslint 替代规则关闭不理解类型语法的核心实现。
  *
  * @param options - TypeScript 文件范围与类型感知 parser 选项。
- * @param files - 可覆盖 `options.files` 的显式文件范围，供框架配置复用。
+ * @param files - 显式文件范围，优先于 `options.files`；省略时使用 `options.files`，后者未提供时使用 {@link GLOBS_TYPESCRIPT}。
  * @returns 包含 parser、extends、parserOptions 与完整本地规则记录的单个 override。
- * @internal
  */
 export const createTypeScriptConfig = (
 	options: TypeScriptConfigOptions = {},
@@ -102,7 +95,6 @@ export const createTypeScriptConfig = (
  *
  * @param options - TypeScript 文件范围与 parser 选项。
  * @returns 始终包含一个 TypeScript override 的数组。
- * @internal
  */
 export const createTypeScriptConfigs = (options: TypeScriptConfigOptions = {}): Linter.ConfigOverride[] => [createTypeScriptConfig(options)];
 
@@ -113,7 +105,6 @@ export const createTypeScriptConfigs = (options: TypeScriptConfigOptions = {}): 
  * 清理实现细节的 unused 与 type-import 规则。该 override 应位于普通 TypeScript 配置之后。
  *
  * @returns 匹配 `.d.ts`、`.d.cts` 与 `.d.mts` 的单个 override。
- * @internal
  */
 export const createTypeScriptDeclarationConfigs = (): Linter.ConfigOverride[] => [
 	{
@@ -133,7 +124,6 @@ export const createTypeScriptDeclarationConfigs = (): Linter.ConfigOverride[] =>
  * TypeScript/TSX 与 Vue SFC 使用独立 parser 链，避免 Vue 模板被 TypeScript parser 误读。
  *
  * @returns 依次覆盖 TypeScript 方言与 Vue SFC 的两个类型感知 overrides。
- * @internal
  */
 export const createTypeAwareConfigs = (): Linter.ConfigOverride[] => {
 	const typeAwareOptions = { typeChecked: true } as const;

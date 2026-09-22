@@ -1,6 +1,6 @@
 {
 	"name": "@fast-china/eslint-config-legacy",
-	"version": "2.1.9",
+	"version": "2.1.10",
 	"description": "Production-ready ESLint 8 Legacy Config for Vue web administration projects with direct extends and reusable config creators.",
 	"type": "commonjs",
 	"keywords": [
@@ -188,7 +188,7 @@
 		"format:check": "prettier --check .",
 		"test": "pnpm run build && pnpm run test:types && pnpm run test:runtime && pnpm run test:package",
 		"test:types": "tsc --noEmit --project tests/tsconfig.json",
-		"test:runtime": "node --test tests/config.test.cjs",
+		"test:runtime": "node --test tests/config.test.cjs tests/tool-ignores.test.mjs",
 		"test:package": "node --test tests/package.test.mjs",
 		"check": "pnpm run typecheck && pnpm run test && pnpm run lint && pnpm run format:check",
 		"prepack": "pnpm run check"

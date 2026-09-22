@@ -2,14 +2,12 @@ import { GLOB_YAML } from "../../constants";
 import type { Linter } from "eslint";
 
 /**
- * YAML 配置的内部选项。
- *
- * @internal
+ * YAML 配置的选项。
  */
 export interface YamlConfigOptions {
 	/**
-	 * 是否追加 eslint-plugin-yml 的 Prettier 兼容预置。
-	 * @default true
+	 * 是否追加 eslint-plugin-yml 的 Prettier 兼容预置
+	 * @defaultValue `true`
 	 */
 	prettier?: boolean;
 }
@@ -19,7 +17,6 @@ export interface YamlConfigOptions {
  *
  * @param options - Prettier 兼容层开关。
  * @returns 匹配 `.yaml` 与 `.yml` 的单个 override。
- * @internal
  */
 export const createYamlConfigs = ({ prettier = true }: YamlConfigOptions = {}): Linter.ConfigOverride[] => [
 	{

@@ -12,7 +12,6 @@ delete prettierRules.curly;
  *
  * @param files - 需要关闭格式冲突规则的代码文件 glob。
  * @returns 单个 Prettier 兼容规则 override；文件集合为空时返回空数组。
- * @internal
  */
 export const createPrettierConfigs = (files: readonly string[]): Linter.ConfigOverride[] =>
 	files.length > 0 ? [{ files: [...files], rules: prettierRules }] : [];

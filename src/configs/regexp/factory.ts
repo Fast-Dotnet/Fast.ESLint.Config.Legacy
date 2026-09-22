@@ -9,7 +9,6 @@ import type { Linter } from "eslint";
  *
  * @param files - 应用 RegExp 规则的代码文件 glob。
  * @returns 单个推荐规则 override；文件集合为空时返回空数组。
- * @internal
  */
 export const createRegexpConfigs = (files: readonly string[]): Linter.ConfigOverride[] =>
 	files.length > 0

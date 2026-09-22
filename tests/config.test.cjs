@@ -3,6 +3,14 @@ const test = require("node:test");
 const configs = require("@fast-china/eslint-config-legacy/configs");
 const { assertNoConfigFailure, composeWithRoot, createLinter, directConfigNames, directConfigs, rootConfig } = require("./helpers/eslint.cjs");
 
+test("unified Vue rules are the only rule-record entry for Vue version composition", () => {
+	const rules = require("@fast-china/eslint-config-legacy/rules");
+	assert.ok(rules.vueRules);
+	for (const name of ["vueCommonRules", "vue2Rules", "vue3Rules"]) {
+		assert.equal(Object.hasOwn(rules, name), false, name);
+	}
+});
+
 test("every granular config resolves through its public Legacy extends name", async () => {
 	for (const name of directConfigNames) {
 		const filePath =

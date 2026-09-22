@@ -12,7 +12,6 @@ registerStyleAwareImportRules();
  *
  * @param files - 应用 import-x 规则的脚本和框架文件 glob。
  * @returns 单个限定文件范围的 override；文件集合为空时返回空数组。
- * @internal
  */
 export const createImportConfigs = (files: readonly string[]): Linter.ConfigOverride[] =>
 	files.length > 0

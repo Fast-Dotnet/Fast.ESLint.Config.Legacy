@@ -8,7 +8,6 @@ import type { Linter } from "eslint";
  * 该 override 不改变 parser、env 或其他模块规则。
  *
  * @returns `.cjs` 与 `.cts` 文件共用的单个规则 override。
- * @internal
  */
 export const createCommonJsConfigs = (): Linter.ConfigOverride[] => [
 	{

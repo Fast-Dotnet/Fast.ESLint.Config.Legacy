@@ -16,5 +16,5 @@ module.exports = {
 		"@fast-china/eslint-config-legacy/sort-package",
 		"@fast-china/eslint-config-legacy/sort-tsconfig",
 	],
-	ignorePatterns: ["coverage", "dist", "node_modules", "src/typegen.d.ts", "tests/fixtures/*.vue"],
+	ignorePatterns: ["**/.agents/**", "**/skills-lock.json", "coverage", "dist", "node_modules", "src/typegen.d.ts", "tests/fixtures/*.vue"],
 };

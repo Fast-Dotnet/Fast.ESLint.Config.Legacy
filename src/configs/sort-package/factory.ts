@@ -3,19 +3,17 @@ import { createJsonExtends } from "../json/factory";
 import type { Linter } from "eslint";
 
 /**
- * `package.json` 排序 override 的内部组合选项。
- *
- * @internal
+ * `package.json` 排序 override 的组合选项。
  */
 export interface PackageJsonSortConfigOptions {
 	/**
-	 * JSON 基础配置是否已经由根配置或自定义组合启用。
-	 * @default true
+	 * JSON 基础配置是否已经由根配置或自定义组合启用
+	 * @defaultValue `true`
 	 */
 	json?: boolean;
 	/**
-	 * 补建 JSON 基础配置时是否启用 Prettier 兼容层。
-	 * @default true
+	 * 补建 JSON 基础配置时是否启用 Prettier 兼容层
+	 * @defaultValue `true`
 	 */
 	prettier?: boolean;
 }
@@ -28,7 +26,6 @@ export interface PackageJsonSortConfigOptions {
  *
  * @param options - JSON 基础配置存在性及 Prettier 兼容层开关。
  * @returns 只匹配 `package.json` 的单个 override。
- * @internal
  */
 export const createPackageJsonSortConfigs = ({ json = true, prettier = true }: PackageJsonSortConfigOptions = {}): Linter.ConfigOverride[] => [
 	{

@@ -35,4 +35,3 @@ export * from "./sort-package";
 export * from "./sort-tsconfig";
 export * from "./typescript";
 export * from "./vue";
-export * from "./vue-legacy";

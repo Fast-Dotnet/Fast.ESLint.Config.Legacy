@@ -2,7 +2,23 @@
 
 All notable changes to this project are documented in this file.
 
-The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and releases follow Semantic Versioning.
+The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and releases should follow [Semantic Versioning](https://semver.org/).
+
+## [2.1.10] - 2026-09-22
+
+### Removed
+
+- Remove the unused Vue common/version rule aliases; use the unified `vueRules` export. Vue 2/3 configuration factories remain available.
+
+### Fixed
+
+- Add equivalent skill-file exclusions to the published Legacy root config and local tooling without replacing ESLint 8 or CommonJS support.
+
+### Documentation and Tooling
+
+- Correct localized Fast.Docs links and retain minimal README examples.
+- Align public-contract comments and agent guidance.
+- Keep ESLint and Prettier skill-file ignores separate and add regression checks.
 
 ## [2.1.9] - 2026-09-14
 
@@ -129,7 +145,9 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [2.0.2] - 2026-08-02
 
-### Configuration
+### Added
+
+#### Configuration
 
 - The package root is the only merged config and targets Vue 3, TypeScript, Vite browser administration projects.
 - Top-level granular subpaths remain directly usable from Legacy `extends`; `/vue` targets Vue 3 and `/vue2` targets Vue 2.
@@ -139,7 +157,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - Angular coverage includes TypeScript, external templates, inline-template processing, template accessibility, and OnPush diagnostics.
 - `createVueConfigs()` retains Vue 2 and Vue 3 upstream presets and framework-specific rule boundaries.
 
-### Architecture
+#### Architecture
 
 - Public exports include the package root, granular Legacy configs, `/configs`, `/constants`, `/rules`, and package metadata.
 - Each `src/configs/<name>` directory colocates its directly loadable default config in `index.ts` and reusable config construction in `factory.ts`; `src/rules` owns rule records.
@@ -150,17 +168,33 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - Node.js globals are provided by environment config creators without an additional Node rule plugin.
 - JSON, JSONC, JSON5, YAML, Markdown, Promise, RegExp, import-x, and Prettier compatibility are scoped by file type.
 
-### Toolchain
+#### Toolchain
 
 - Registry metadata was reviewed on 2026-08-02. All dependencies already use the newest ESLint 8-compatible release; incompatible ESLint 9/10 and TypeScript 7 major upgrades remain intentionally excluded.
-
 - pnpm 11 is the repository package manager and `pnpm-lock.yaml` is the only dependency lockfile.
 - CI runs on Node.js 22.18.0 and 24.18.0 with frozen-lockfile installation.
 - TypeScript 6 and tsdown produce ESLint 8-compatible CommonJS entries, `export =` declarations, declaration maps, and runtime source maps.
 - Package and tsconfig sorting remain explicit overlays and never reorder semantic `package.json#exports` condition keys.
 
-### Quality
+#### Quality
 
 - Runtime and type-consumer tests cover every export, supported language and framework, environment globals, Project Service, fix safety, rule documentation, and declarations.
 - `publint`, Are the Types Wrong, ESLint, TypeScript, Prettier, generated-type drift checks, and package dry-runs protect releases.
 - Bilingual README, dependency compatibility, high-impact rule guidance, security policy, contribution guidance, and engineering audit documentation are included.
+
+[2.1.10]: https://gitee.com/FastDotnet/fast.eslint.config.legacy/compare/v2.1.9...v2.1.10
+[2.1.9]: https://gitee.com/FastDotnet/fast.eslint.config.legacy/compare/v2.1.8...v2.1.9
+[2.1.8]: https://gitee.com/FastDotnet/fast.eslint.config.legacy/compare/v2.1.7...v2.1.8
+[2.1.7]: https://gitee.com/FastDotnet/fast.eslint.config.legacy/compare/v2.1.6...v2.1.7
+[2.1.6]: https://gitee.com/FastDotnet/fast.eslint.config.legacy/compare/v2.1.5...v2.1.6
+[2.1.5]: https://gitee.com/FastDotnet/fast.eslint.config.legacy/compare/v2.1.4...v2.1.5
+[2.1.4]: https://gitee.com/FastDotnet/fast.eslint.config.legacy/compare/v2.1.3...v2.1.4
+[2.1.3]: https://gitee.com/FastDotnet/fast.eslint.config.legacy/compare/v2.1.2...v2.1.3
+[2.1.2]: https://gitee.com/FastDotnet/fast.eslint.config.legacy/compare/v2.1.1...v2.1.2
+[2.1.1]: https://gitee.com/FastDotnet/fast.eslint.config.legacy/compare/v2.1.0...v2.1.1
+[2.1.0]: https://gitee.com/FastDotnet/fast.eslint.config.legacy/compare/v2.0.6...v2.1.0
+[2.0.6]: https://gitee.com/FastDotnet/fast.eslint.config.legacy/compare/v2.0.5...v2.0.6
+[2.0.5]: https://gitee.com/FastDotnet/fast.eslint.config.legacy/compare/v2.0.4...v2.0.5
+[2.0.4]: https://gitee.com/FastDotnet/fast.eslint.config.legacy/compare/v2.0.3...v2.0.4
+[2.0.3]: https://gitee.com/FastDotnet/fast.eslint.config.legacy/compare/v2.0.2...v2.0.3
+[2.0.2]: https://gitee.com/FastDotnet/fast.eslint.config.legacy/releases/tag/v2.0.2

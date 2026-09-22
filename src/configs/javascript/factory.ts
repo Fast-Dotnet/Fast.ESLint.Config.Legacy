@@ -11,9 +11,8 @@ interface JavaScriptConfigOverride extends Linter.ConfigOverride {
  *
  * JSX 解析在这里显式开启；基础正确性和公共规则由更早的 `createCommonConfigs()` 提供。
  *
- * @param files - 由该 override 接管的 JavaScript 文件 glob。
+ * @param files - 由该 override 接管的 JavaScript 文件 glob，默认使用 {@link GLOBS_JAVASCRIPT}。
  * @returns 包含 parserOptions 与本地 JavaScript 规则的单个 override。
- * @internal
  */
 export const createJavaScriptConfig = (files: readonly string[] = GLOBS_JAVASCRIPT): JavaScriptConfigOverride => ({
 	files: [...files],
@@ -28,8 +27,7 @@ export const createJavaScriptConfig = (files: readonly string[] = GLOBS_JAVASCRI
 /**
  * 将 {@link createJavaScriptConfig} 包装为组合器使用的 override 数组。
  *
- * @param files - 由 JavaScript 配置接管的文件 glob。
+ * @param files - 由 JavaScript 配置接管的文件 glob，默认使用 {@link GLOBS_JAVASCRIPT}。
  * @returns 始终包含一个 JavaScript override 的数组。
- * @internal
  */
 export const createJavaScriptConfigs = (files: readonly string[] = GLOBS_JAVASCRIPT): Linter.ConfigOverride[] => [createJavaScriptConfig(files)];
