@@ -3,7 +3,7 @@ import { createJsonExtends } from "../json/factory";
 import type { Linter } from "eslint";
 
 /**
- * `package.json` 排序 override 的组合选项。
+ * `package.json` 排序 override 的组合选项
  */
 export interface PackageJsonSortConfigOptions {
 	/**

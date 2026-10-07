@@ -9,7 +9,7 @@ import type { Linter } from "eslint";
 export type RuntimeEnvironment = "browser" | "node" | "universal";
 
 /**
- * 应用源码环境 override 的创建选项。
+ * 应用源码环境 override 的创建选项
  */
 export interface EnvironmentConfigOptions {
 	/**

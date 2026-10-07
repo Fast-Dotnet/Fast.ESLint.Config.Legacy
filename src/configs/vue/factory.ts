@@ -5,7 +5,7 @@ import type { Linter } from "eslint";
 import type { TypeAwareOptions } from "../typescript/factory";
 
 /**
- * Vue 2/3 单文件组件的配置选项。
+ * Vue 2/3 单文件组件的配置选项
  */
 export interface VueConfigOptions extends TypeAwareOptions {
 	/**

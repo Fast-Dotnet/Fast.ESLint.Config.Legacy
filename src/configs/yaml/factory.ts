@@ -2,7 +2,7 @@ import { GLOB_YAML } from "../../constants";
 import type { Linter } from "eslint";
 
 /**
- * YAML 配置的选项。
+ * YAML 配置的选项
  */
 export interface YamlConfigOptions {
 	/**

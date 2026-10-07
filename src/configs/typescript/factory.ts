@@ -8,7 +8,7 @@ interface TypeScriptConfigOverride extends Linter.ConfigOverride {
 }
 
 /**
- * TypeScript parser 与 Project Service 的配置选项。
+ * TypeScript parser 与 Project Service 的配置选项
  */
 export interface TypeAwareOptions {
 	/**
@@ -21,7 +21,7 @@ export interface TypeAwareOptions {
 }
 
 /**
- * 普通 TypeScript 文件的配置选项。
+ * 普通 TypeScript 文件的配置选项
  */
 export interface TypeScriptConfigOptions extends TypeAwareOptions {
 	/**

@@ -2,7 +2,7 @@ import { GLOBS_JSONC_AS_JSON, GLOBS_TSCONFIG, GLOB_JSON, GLOB_JSON5, GLOB_JSONC 
 import type { Linter } from "eslint";
 
 /**
- * JSON 方言配置的选项。
+ * JSON 方言配置的选项
  */
 export interface JsonConfigOptions {
 	/**

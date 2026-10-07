@@ -2,7 +2,7 @@ import { GLOB_MARKDOWN } from "../../constants";
 import type { Linter } from "eslint";
 
 /**
- * Markdown 根级 processor 与虚拟代码块 override 的组合结果。
+ * Markdown 根级 processor 与虚拟代码块 override 的组合结果
  */
 export interface MarkdownConfigs {
 	/** 必须放在 Legacy 根配置的 Markdown processor 预置。 */

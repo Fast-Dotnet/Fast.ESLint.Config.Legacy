@@ -4,7 +4,7 @@ import { createJsonExtends } from "../json/factory";
 import type { Linter } from "eslint";
 
 /**
- * `tsconfig*.json` 排序 override 的组合选项。
+ * `tsconfig*.json` 排序 override 的组合选项
  */
 export interface TsconfigSortConfigOptions {
 	/**

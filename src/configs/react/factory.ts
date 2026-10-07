@@ -34,7 +34,7 @@ export interface ReactConfigOptions {
 	jsxRuntime?: "automatic" | "classic";
 }
 
-/** 控制 React 创建器接管哪些脚本语言的内部组合选项。 */
+/** 控制 React 创建器接管哪些脚本语言的内部组合选项 */
 interface ReactLanguageOptions {
 	/**
 	 * 是否创建 JavaScript/JSX React override

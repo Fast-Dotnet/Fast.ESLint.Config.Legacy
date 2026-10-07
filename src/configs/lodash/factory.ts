@@ -2,7 +2,7 @@ import { preferLodashRules, preferLodashUnifiedRules } from "../../rules";
 import type { Linter } from "eslint";
 
 /**
- * Lodash 静态导入来源策略。
+ * Lodash 静态导入来源策略
  */
 export type LodashPreference = "lodash" | "lodash-unified";
 
