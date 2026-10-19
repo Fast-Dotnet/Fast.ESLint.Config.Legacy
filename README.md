@@ -14,7 +14,7 @@
 
 ESLint 8 Legacy configuration SDK with CommonJS, eslintrc and granular configuration entries.
 
-**[Documentation](http://docs.fastdotnet.cn/en-US/frontend/eslint-config-legacy/) · [Official website](http://fastdotnet.com)**
+**[Documentation](https://docs.fastdotnet.cn/en-US/frontend/eslint-config-legacy/) · [Official website](https://fastdotnet.com)**
 
 ## Scope
 
@@ -79,8 +79,8 @@ Use `vueRules` for the rule record; Vue 2/3 differences belong to the configurat
 
 ## Documentation
 
-- [Compatibility matrix](http://docs.fastdotnet.cn/en-US/frontend/eslint-config-legacy/dependency-compatibility)
-- [Default rules and risk guide](http://docs.fastdotnet.cn/en-US/frontend/eslint-config-legacy/rules-risk)
+- [Compatibility matrix](https://docs.fastdotnet.cn/en-US/frontend/eslint-config-legacy/dependency-compatibility)
+- [Default rules and risk guide](https://docs.fastdotnet.cn/en-US/frontend/eslint-config-legacy/rules-risk)
 - [Engineering audit (Chinese)](./docs/engineering-audit.zh.md)
 - [Contributing guide](./CONTRIBUTING.md)
 - [Security policy](./SECURITY.md)

@@ -14,7 +14,7 @@
 
 面向 ESLint 8 的 Legacy 配置 SDK，保留 CommonJS、eslintrc 和按需配置入口。
 
-**[使用文档](http://docs.fastdotnet.cn/zh-CN/frontend/eslint-config-legacy/) · [官方网站](http://fastdotnet.com)**
+**[使用文档](https://docs.fastdotnet.cn/zh-CN/frontend/eslint-config-legacy/) · [官方网站](https://fastdotnet.com)**
 
 ## 版本定位
 
@@ -77,8 +77,8 @@ ESLint 8 配置不能直接使用 Flat Config API；框架、类型感知和格�
 
 ## 文档
 
-- [依赖兼容矩阵](http://docs.fastdotnet.cn/zh-CN/frontend/eslint-config-legacy/dependency-compatibility)
-- [默认规则与风险指南](http://docs.fastdotnet.cn/zh-CN/frontend/eslint-config-legacy/rules-risk)
+- [依赖兼容矩阵](https://docs.fastdotnet.cn/zh-CN/frontend/eslint-config-legacy/dependency-compatibility)
+- [默认规则与风险指南](https://docs.fastdotnet.cn/zh-CN/frontend/eslint-config-legacy/rules-risk)
 - [工程质量审查报告](./docs/engineering-audit.zh.md)
 - [贡献指南](./CONTRIBUTING.md)
 - [安全策略](./SECURITY.md)
