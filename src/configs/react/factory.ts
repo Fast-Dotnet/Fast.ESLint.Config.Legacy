@@ -83,8 +83,9 @@ export const createReactConfigs = (
 	const settings = { react: { version } };
 	const javaScriptConfig = createJavaScriptConfig(javascriptFiles);
 	const typeScriptConfig = createTypeScriptConfig(typescriptOptions, typescriptFiles);
+	// React 的 JSX 属性和对象属性允许接收 Promise 返回函数，即使目标类型为 `() => void`；其他 Promise 误用继续检查。
 	const typeCheckedReactRules: Linter.RulesRecord = typescriptOptions.typeChecked
-		? { "@typescript-eslint/no-misused-promises": ["error", { checksVoidReturn: { attributes: false } }] }
+		? { "@typescript-eslint/no-misused-promises": ["error", { checksVoidReturn: { attributes: false, properties: false } }] }
 		: {};
 
 	return [

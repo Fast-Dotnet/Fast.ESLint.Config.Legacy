@@ -201,6 +201,35 @@ test("type-aware overlay starts Project Service and enables recommended typed ru
 	assert.equal(vueConfig.rules["@typescript-eslint/no-unused-vars"][1].args, "none");
 });
 
+test("async object callbacks are exempt in typed Vue and React while other Promise misuse remains checked", async () => {
+	const source = `declare function save(): Promise<void>;
+declare function invoke(callback: () => void): void;
+const callbacks: { onSave: () => void } = { onSave: async () => { await save(); } };
+const handler: () => void = async () => { await save(); };
+invoke(async () => { await save(); });
+handler();
+if (save()) callbacks.onSave();
+`;
+	for (const [overrides, filePath, isSfc, allowsProperties] of [
+		[configs.createTypeAwareConfigs(), "src/index.ts", false, false],
+		[configs.createTypeAwareConfigs(), "tests/fixtures/type-aware.vue", true, true],
+		[configs.createVueConfigs({ typeChecked: true }), "tests/fixtures/type-aware.vue", true, true],
+		[configs.createVueConfigs({ typeChecked: true, version: 2 }), "tests/fixtures/type-aware.vue", true, true],
+		[configs.createReactConfigs({}, { typescriptOptions: { typeChecked: true } }), "tests/fixtures/async-callback.tsx", false, true],
+	]) {
+		const [result] = await createLinter(composeWithRoot(overrides)).lintText(isSfc ? `<script setup lang="ts">\n${source}</script>` : source, {
+			filePath,
+		});
+		assertNoConfigFailure(result, filePath);
+		const messages = result.messages.filter((message) => message.ruleId === "@typescript-eslint/no-misused-promises");
+		assert.deepEqual(
+			messages.map((message) => message.messageId).sort(),
+			["conditional", "voidReturnArgument", "voidReturnVariable", ...(allowsProperties ? [] : ["voidReturnProperty"])].sort(),
+			filePath
+		);
+	}
+});
+
 test("package sorting preserves semantic exports condition order", async () => {
 	const linter = createLinter(composeWithRoot(configs.createPackageJsonSortConfigs()), { fix: true });
 	const source = '{"name":"fixture","version":"1.0.0","exports":{".":{"node":"./node.js","import":"./index.js","default":"./index.js"}}}\n';

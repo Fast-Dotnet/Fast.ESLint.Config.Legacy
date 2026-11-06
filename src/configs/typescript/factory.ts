@@ -156,8 +156,8 @@ export const createTypeAwareConfigs = (): Linter.ConfigOverride[] => {
 				// SFC 以模板上下文和快速迭代为主，不强制补写函数返回类型或模块边界类型。
 				"@typescript-eslint/explicit-function-return-type": "off",
 				"@typescript-eslint/explicit-module-boundary-types": "off",
-				// Vue 模板事件由框架接管异步结果；其余 Promise 误用继续检查。
-				"@typescript-eslint/no-misused-promises": ["error", { checksVoidReturn: { attributes: false } }],
+				// SFC 的 JSX 属性和对象属性允许接收 Promise 返回函数，即使目标类型为 `() => void`；其他 Promise 误用继续检查。
+				"@typescript-eslint/no-misused-promises": ["error", { checksVoidReturn: { attributes: false, properties: false } }],
 				// 声明型框架回调可保留未使用形参；普通未使用变量和导入仍然报错。
 				"@typescript-eslint/no-unused-vars": ["error", { args: "none", caughtErrors: "none", ignoreRestSiblings: true }],
 			},

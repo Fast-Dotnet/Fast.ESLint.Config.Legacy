@@ -4,6 +4,13 @@ All notable changes to this project are documented in this file.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and releases should follow [Semantic Versioning](https://semver.org/).
 
+## [2.1.11] - 2026-11-06
+
+### Fixed
+
+- Allow Promise-returning object-property callbacks typed as `() => void` in type-aware Vue SFC and React configurations via `no-misused-promises.checksVoidReturn.properties: false`; retain the existing JSX attribute exemption and other Promise misuse checks.
+- Clarify that these exemptions do not guarantee that callers handle Promise rejections, and add ESLint 8 regression coverage for their configuration scope.
+
 ## [2.1.10] - 2026-09-22
 
 ### Removed
@@ -182,6 +189,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - `publint`, Are the Types Wrong, ESLint, TypeScript, Prettier, generated-type drift checks, and package dry-runs protect releases.
 - Bilingual README, dependency compatibility, high-impact rule guidance, security policy, contribution guidance, and engineering audit documentation are included.
 
+[2.1.11]: https://gitee.com/FastDotnet/fast.eslint.config.legacy/compare/v2.1.10...v2.1.11
 [2.1.10]: https://gitee.com/FastDotnet/fast.eslint.config.legacy/compare/v2.1.9...v2.1.10
 [2.1.9]: https://gitee.com/FastDotnet/fast.eslint.config.legacy/compare/v2.1.8...v2.1.9
 [2.1.8]: https://gitee.com/FastDotnet/fast.eslint.config.legacy/compare/v2.1.7...v2.1.8
